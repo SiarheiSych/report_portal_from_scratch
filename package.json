@@ -1,0 +1,19 @@
+{
+  "name": "report_portal_framework_scratch",
+  "version": "1.0.0",
+  "description": "Report portal framework from scratch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiarheiSych/report_portal_from_scratch.git"
+  },
+  "author": "Siarhei Sych",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SiarheiSych/report_portal_from_scratch/issues"
+  },
+  "homepage": "https://github.com/SiarheiSych/report_portal_from_scratch#readme"
+}
