@@ -17,13 +17,14 @@
   },
   "homepage": "https://github.com/SiarheiSych/report_portal_from_scratch#readme",
   "dependencies": {
-    "chai": "^4.3.7",
-    "chai-as-promised": "^7.1.1",
     "chromedriver": "^111.0.0",
     "selenium-webdriver": "^4.8.2"
   },
   "devDependencies": {
     "@testing-library/webdriverio": "^3.2.1",
+    "chai": "^4.3.7",
+    "chai-as-promised": "^7.1.1",
+    "log4js": "^6.9.1",
     "mocha": "^10.2.0",
     "typescript": "^5.0.4"
   }
