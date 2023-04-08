@@ -23,6 +23,7 @@
     "selenium-webdriver": "^4.8.2"
   },
   "devDependencies": {
+    "@testing-library/webdriverio": "^3.2.1",
     "mocha": "^10.2.0"
   }
 }
