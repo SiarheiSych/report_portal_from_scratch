@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "types": ["node", "webdriverio/async"],
+    "typeRoots": ["node_modules/@types"]
+  }
+}
