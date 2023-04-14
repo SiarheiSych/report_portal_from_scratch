@@ -10,8 +10,8 @@
     "inlineSourceMap": true,
     "removeComments": true,
     "esModuleInterop": true,
-    "target": "es2019",
-    "module": "commonjs",
+    "target": "ES6",
+    "module": "CommonJS",
     "lib": ["es2020", "dom"],
     "allowJs": true,
     "types": ["node", "webdriverio/async", "mocha"],
@@ -20,6 +20,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": "."
   },
-  "include": ["test/**/*.ts"],
+  "include": ["test/**/*.ts", "common/**/**/*.ts"],
   "exclude": ["node_modules"]
 }
