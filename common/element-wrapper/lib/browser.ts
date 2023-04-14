@@ -51,10 +51,6 @@ class BrowserWrapper {
     return browser.throttle(option);
   }
 
-  async getWindowSize() {
-    return browser.getWindowSize();
-  }
-
   async setWindowSize(width: number, height: number) {
     return browser.setWindowSize(width, height);
   }
