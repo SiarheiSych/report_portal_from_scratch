@@ -2,20 +2,17 @@
   "name": "report_portal_framework_scratch",
   "version": "1.0.0",
   "description": "Report portal framework from scratch",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "mocha test/specs/*spec.ts --reporter spec"
+    "test": "mocha test/specs/*spec.ts"
   },
   "repository": {
-    "type": "git",
     "url": "git+https://github.com/SiarheiSych/report_portal_from_scratch.git"
   },
   "author": "Siarhei Sych",
   "license": "ISC",
-  "type": "module",
   "homepage": "https://github.com/SiarheiSych/report_portal_from_scratch#readme",
   "dependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
     "chromedriver": "^111.0.0",
     "webdriverio": "7.30.2"
   },
@@ -25,9 +22,9 @@
     "chai-as-promised": "^7.1.1",
     "log4js": "^6.4.4",
     "mocha": "^9.2.2",
-    "ts-node": "^10.4.0",
+    "ts-node": "^10.6.0",
     "tsconfig-paths": "^3.12.0",
     "tslib": "^2.5.0",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.10"
   }
 }

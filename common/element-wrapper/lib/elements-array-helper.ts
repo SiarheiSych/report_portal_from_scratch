@@ -1,12 +1,15 @@
-import { getLogger } from '../../utils/lib/logger';
-import { UIElement } from './elements';
-import { ElementParamsObj } from './types';
-
+import { getLogger } from "log4js";
+import { ElementParamsObj, UIElement } from ".";
 
 const logger = getLogger();
 
 export class ElementsArrayHelper {
-  constructor(private elementArrayInstance: Promise<WebdriverIO.ElementArray> | ReturnType<WebdriverIO.Browser['$$']>, public selector?: string) {}
+  constructor(
+    private elementArrayInstance:
+      | Promise<WebdriverIO.ElementArray>
+      | ReturnType<WebdriverIO.Browser["$$"]>,
+    public selector?: string
+  ) {}
 
   static getInstance(parentSelector: string, elementParamsObj?: ElementParamsObj) {
     const childSelector = elementParamsObj?.childSelector;
@@ -17,14 +20,12 @@ export class ElementsArrayHelper {
   }
 
   async getElementsArray(): Promise<UIElement[]> {
-    return (await this.elementArrayInstance).map(el => new UIElement(el));
+    return (await this.elementArrayInstance).map((el) => new UIElement(el));
   }
 
   async getChildElementsArray(childSelector: string): Promise<UIElement[]> {
-    return (await this.elementArrayInstance).map(el => new UIElement(el).getChild(childSelector));
+    return (await this.elementArrayInstance).map((el) => new UIElement(el).getChild(childSelector));
   }
-
-  
 
   private async oneElementInstanceByIndex(index: number): Promise<WebdriverIO.Element> {
     logger.debug(`Get ${index} element from array`);
@@ -33,7 +34,9 @@ export class ElementsArrayHelper {
 
   private async oneElementInstanceByText(text: string, containing = false) {
     const allText = await this.getAllTextsList();
-    const index = containing ? allText.findIndex(item => item.includes(text)) : allText.findIndex(item => item === text);
+    const index = containing
+      ? allText.findIndex((item) => item.includes(text))
+      : allText.findIndex((item) => item === text);
     if (index !== -1) {
       return (await this.elementArrayInstance)[index];
     } else {
@@ -53,22 +56,20 @@ export class ElementsArrayHelper {
     return new UIElement(this.oneElementInstanceByText(text, true));
   }
 
-
   async getAllTextsList(firstNElements?: number): Promise<string[]> {
     let elements = await this.getElementsArray();
     if (firstNElements) {
       elements = elements.slice(0, firstNElements);
     }
-    return Promise.all(elements.map(e => e.getText()));
+    return Promise.all(elements.map((e) => e.getText()));
   }
 
   async getTrimText() {
     const elements = await this.getElementsArray();
-    const texts: string[] = await Promise.all(elements.map(e => e.getText()));
-    return Promise.all(texts.map(text => text.trim()));
+    const texts: string[] = await Promise.all(elements.map((e) => e.getText()));
+    return Promise.all(texts.map((text) => text.trim()));
   }
 
-  
   clickByElementText(textValue: string) {
     const element = this.getElementByText(textValue);
     logger.info(`Click on element with text ${textValue}`);

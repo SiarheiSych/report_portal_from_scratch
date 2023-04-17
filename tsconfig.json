@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "declaration": true,
+    "declaration": false,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
@@ -11,15 +11,21 @@
     "removeComments": true,
     "esModuleInterop": true,
     "target": "ES6",
-    "module": "CommonJS",
+    "module": "commonjs",
     "lib": ["es2020", "dom"],
     "allowJs": true,
     "types": ["node", "webdriverio/async", "mocha"],
     "typeRoots": ["node_modules/@types"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "common/auth": ["common/auth/index.ts"],
+      "common/constant": ["common/constant/lib/index.ts"],
+      "common/element-wrapper": ["common/element-wrapper/lib/index.ts"],
+      "common/utils": ["common/utils/lib/index.ts"]
+    }
   },
   "include": ["test/**/*.ts", "common/**/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

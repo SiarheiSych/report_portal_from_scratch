@@ -1,8 +1,5 @@
-
-import { UIElement } from '../../common/element-wrapper/libs/elements'
-import { LoginPage, User } from '../../common/constant/lib/models';
-import { uiConstants } from '../../common/constant/lib/ui-constants';
-
+import { LoginPage, uiConstants, User } from "common/constant";
+import { UIElement } from "common/element-wrapper";
 
 class RPLoginPage implements LoginPage {
   get loginPanel() {
@@ -17,7 +14,7 @@ class RPLoginPage implements LoginPage {
     return UIElement.getInstance('[type="submit"]');
   }
 
-   async login(user: User) {
+  async login(user: User) {
     await this.loginPanel.waitForElementDisplayed(uiConstants.timeouts.defaultWait);
     await this.loginPanel.setValue(user.userName);
     await this.passwordInput.setValue(user.password);

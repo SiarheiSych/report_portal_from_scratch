@@ -1,19 +1,19 @@
-import { browserWrapper } from '../element-wrapper/libs/browser';
-import { getLogger } from '../utils/lib/logger';
-import { LoginPage, User } from '../constant/lib/models';
+import { browserWrapper } from "common/element-wrapper";
+import { getLogger } from "log4js";
+import { LoginPage, User } from "common/constant";
 
-const logger = getLogger('[Login helper]');
-let loginPage :LoginPage;
+const logger = getLogger("[Login helper]");
+let loginPage: LoginPage;
 let userCredantions: User = {
-  userName:'Sergei',
-  password: 'Eva1995@'
-}
+  userName: "Sergei",
+  password: "Eva1995@",
+};
 
-export async function login( ) {
-  try{
-    await browserWrapper.navigate('http://localhost:8080/');
-    await loginPage.login(userCredantions)
-  } catch(error) {
-    logger.info('Page failed to load');
+export async function login() {
+  try {
+    await browserWrapper.navigate("http://localhost:8080/");
+    await loginPage.login(userCredantions);
+  } catch (error) {
+    logger.info("Page failed to load");
   }
 }

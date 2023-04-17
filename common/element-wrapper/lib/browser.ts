@@ -1,4 +1,5 @@
-import { getLogger } from "../../utils/lib/logger";
+import { getLogger } from "log4js";
+
 const logger = getLogger("[Browser Wrapper]");
 
 class BrowserWrapper {
