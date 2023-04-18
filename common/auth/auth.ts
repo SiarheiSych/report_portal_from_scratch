@@ -1,15 +1,11 @@
 import { browserWrapper } from "../element-wrapper";
 import { getLogger } from "log4js";
-import { LoginPage, User } from "../constant";
+import { LoginPage } from "../constant";
+import { userCredantions } from "test/pageobjects/constant";
 
 const logger = getLogger("[Login helper]");
 
 let rpLoginPage: LoginPage;
-
-let userCredantions: User = {
-  userName: "Sergei",
-  password: "Eva1995@",
-};
 
 export async function loginAsUser() {
   try {

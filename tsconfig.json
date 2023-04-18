@@ -7,8 +7,9 @@
     "importHelpers": true,
     "inlineSourceMap": true,
     "removeComments": true,
+    "noImplicitAny": true,
     "esModuleInterop": true,
-    "target": "es2019",
+    "target": "es6",
     "module": "commonjs",
     "lib": ["es2020", "dom"],
     "allowJs": true,
@@ -18,6 +19,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": "."
   },
-  "include": ["test/**/*.ts", "wdio.conf.ts"],
+  "include": ["test/**/*.ts", "wdio.conf.ts", "common/**/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

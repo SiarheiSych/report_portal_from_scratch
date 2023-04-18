@@ -1,8 +1,9 @@
-import { start } from "chromedriver";
+import { rpLoginPage } from "test/pageobjects";
+import { userCredantions } from "test/pageobjects/constant";
 
 describe("aaa", () => {
   before("aaa", () => {
-    console.log("hello");
+    rpLoginPage.login(userCredantions);
   });
   it("aaa", () => {});
 });
