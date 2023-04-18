@@ -1,5 +1,5 @@
-import { LoginPage, uiConstants, User } from "common/constant";
-import { UIElement } from "common/element-wrapper";
+import { LoginPage, uiConstants, User } from "../../common/constant";
+import { UIElement } from "../../common/element-wrapper";
 
 class RPLoginPage implements LoginPage {
   get loginPanel() {

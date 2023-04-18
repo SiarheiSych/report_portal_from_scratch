@@ -1,18 +1,20 @@
-import { browserWrapper } from "common/element-wrapper";
+import { browserWrapper } from "../element-wrapper";
 import { getLogger } from "log4js";
-import { LoginPage, User } from "common/constant";
+import { LoginPage, User } from "../constant";
 
 const logger = getLogger("[Login helper]");
-let loginPage: LoginPage;
+
+let rpLoginPage: LoginPage;
+
 let userCredantions: User = {
   userName: "Sergei",
   password: "Eva1995@",
 };
 
-export async function login() {
+export async function loginAsUser() {
   try {
     await browserWrapper.navigate("http://localhost:8080/");
-    await loginPage.login(userCredantions);
+    await rpLoginPage.login(userCredantions);
   } catch (error) {
     logger.info("Page failed to load");
   }

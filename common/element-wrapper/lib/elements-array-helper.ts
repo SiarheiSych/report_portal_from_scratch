@@ -1,5 +1,6 @@
 import { getLogger } from "log4js";
-import { ElementParamsObj, UIElement } from ".";
+import { ElementParamsObj } from "./types";
+import { UIElement } from "./elements";
 
 const logger = getLogger();
 

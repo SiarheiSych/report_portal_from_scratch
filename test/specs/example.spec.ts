@@ -1,9 +1,8 @@
-import { login } from "../../common/auth/auth";
+import { start } from "chromedriver";
 
 describe("aaa", () => {
-  before(async () => {
-    await login();
+  before("aaa", () => {
+    console.log("hello");
   });
-
-  it("should have correct choosen date", async () => {});
+  it("aaa", () => {});
 });

@@ -1,6 +1,7 @@
 import { getLogger } from "log4js";
-import { ElementParamsObj, ElementsArrayHelper } from ".";
-import { uiConstants } from "common/constant";
+import { ElementsArrayHelper } from "./elements-array-helper";
+import { ElementParamsObj } from "./types";
+import { uiConstants } from "../../constant";
 
 const logger = getLogger();
 

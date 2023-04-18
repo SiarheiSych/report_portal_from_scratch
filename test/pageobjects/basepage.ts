@@ -1,5 +1,5 @@
-import { UIElement, browserWrapper } from "common/element-wrapper";
-import { Page, uiConstants } from "common/constant";
+import { UIElement, browserWrapper } from "../../common/element-wrapper";
+import { Page, uiConstants } from "../../common/constant";
 
 export abstract class BasePage implements Page {
   protected headerLocator: string;

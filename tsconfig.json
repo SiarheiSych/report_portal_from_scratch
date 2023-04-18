@@ -4,13 +4,11 @@
     "declaration": false,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
     "inlineSourceMap": true,
     "removeComments": true,
     "esModuleInterop": true,
-    "target": "ES6",
+    "target": "es2019",
     "module": "commonjs",
     "lib": ["es2020", "dom"],
     "allowJs": true,
@@ -18,14 +16,8 @@
     "typeRoots": ["node_modules/@types"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "common/auth": ["common/auth/index.ts"],
-      "common/constant": ["common/constant/lib/index.ts"],
-      "common/element-wrapper": ["common/element-wrapper/lib/index.ts"],
-      "common/utils": ["common/utils/lib/index.ts"]
-    }
+    "baseUrl": "."
   },
-  "include": ["test/**/*.ts", "common/**/**/*.ts"],
+  "include": ["test/**/*.ts", "wdio.conf.ts"],
   "exclude": ["node_modules", "dist"]
 }
