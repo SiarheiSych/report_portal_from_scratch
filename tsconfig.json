@@ -19,6 +19,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": "."
   },
-  "include": ["test/**/*.ts", "wdio.conf.ts", "common/**/**/*.ts"],
+  "include": ["./**/*.ts", "wdio.conf.ts", "common/**/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -2,7 +2,6 @@
   "name": "report_portal_framework_scratch",
   "version": "1.0.0",
   "description": "Report portal framework from scratch",
-  "type": "module",
   "scripts": {
     "test": "mocha test/specs/*spec.ts"
   },
@@ -14,6 +13,7 @@
   "homepage": "https://github.com/SiarheiSych/report_portal_from_scratch#readme",
   "dependencies": {
     "chromedriver": "^111.0.0",
+    "selenium-webdriver": "^4.8.2",
     "webdriverio": "7.30.2"
   },
   "devDependencies": {
