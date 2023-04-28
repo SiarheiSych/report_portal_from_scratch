@@ -1,5 +1,5 @@
-import { LoginPage, uiConstants, User } from "../../common/constant";
 import { UIElement } from "../../common/element-wrapper";
+import { LoginPage, uiConstants, User } from "../../constants";
 
 class RPLoginPage implements LoginPage {
   get loginPanel() {
@@ -14,6 +14,10 @@ class RPLoginPage implements LoginPage {
     return UIElement.getInstance('[type="submit"]');
   }
 
+  public open() {
+    return browser.url(`http://localhost:8080/ui/#login`);
+  }
+
   async login(user: User) {
     await this.loginPanel.waitForElementDisplayed(uiConstants.timeouts.defaultWait);
     await this.loginPanel.setValue(user.userName);
@@ -22,4 +26,4 @@ class RPLoginPage implements LoginPage {
   }
 }
 
-export const rpLoginPage = new RPLoginPage();
+export default new RPLoginPage();

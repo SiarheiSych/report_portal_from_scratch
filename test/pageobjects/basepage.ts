@@ -1,10 +1,15 @@
 import { UIElement, browserWrapper } from "../../common/element-wrapper";
-import { Page, uiConstants } from "../../common/constant";
+import { uiConstants, Page } from "../../constants";
 
 export abstract class BasePage implements Page {
-  protected headerLocator: string;
   abstract pageUrl: string;
-  protected container: UIElement;
+  private _container: UIElement;
+  protected get container(): UIElement {
+    return this._container;
+  }
+  protected set container(value: UIElement) {
+    this._container = value;
+  }
 
   async waitLoaded(timeout = uiConstants.timeouts.defaultWait) {
     await this.container.waitForElementDisplayed(timeout);

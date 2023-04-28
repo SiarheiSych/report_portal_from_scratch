@@ -1,7 +1,7 @@
 import { browserWrapper } from "../element-wrapper";
 import { getLogger } from "log4js";
 import { LoginPage } from "../constant";
-import { userCredantions } from "../../test/pageobjects/constant";
+import { userCredantions } from "../../constants/constant";
 
 const logger = getLogger("[Login helper]");
 
