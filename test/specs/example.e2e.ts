@@ -1,14 +1,15 @@
-import { mainPageConstant } from "../../constants";
-import { RPLoginPage } from "../pageobjects/login-page";
+import { mainPageConstant, userCredantions } from "../../constants";
+import { rpLoginPage } from "../pageobjects/login-page";
 import { MainPage } from "../pageobjects/mainPage";
 
 let mainPage = new MainPage();
 
 describe("My Login application", () => {
   before("Login to app", async () => {
-    await RPLoginPage.open();
-    await RPLoginPage.login();
+    await rpLoginPage.open();
+    await rpLoginPage.login(userCredantions);
   });
+
   it("should have correct title", async () => {
     await mainPage.waitLoaded();
     const title = await mainPage.title.getText();

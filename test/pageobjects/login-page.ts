@@ -26,4 +26,4 @@ class RPLoginPage implements LoginPage {
   }
 }
 
-export default new RPLoginPage();
+export const rpLoginPage = new RPLoginPage();
