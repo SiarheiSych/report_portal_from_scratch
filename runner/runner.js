@@ -24,12 +24,10 @@ async function runTests(tests) {
       );
     }
 
-  
     for (const test of testsFiltered) {
       await test();
     }
   } else {
-
     await Promise.all(
       tests.map((test) =>
         test().catch((err) => {
@@ -43,7 +41,7 @@ async function runTests(tests) {
 const mochaAsyncTestrunner = async () => {
   const { skippedSpecs } = await launch(
     "mochaAsyncTestrunner",
-    path.resolve(__dirname, "helpers", "command.hook.config.js"),
+    path.resolve(__dirname, "test", "command.hook.config.js"),
     {
       spec: ["../test/specs/*.ts"],
     }
@@ -52,7 +50,7 @@ const mochaAsyncTestrunner = async () => {
 };
 
 (async () => {
-  const smokeTests = [mochaAsyncTestrunner];
+  const smokeTests = [mochaAsyncTestrunner, jasmineTestrunner];
 
   console.log("\nRunning smoke tests...\n");
   await runTests(smokeTests);
@@ -64,3 +62,14 @@ const mochaAsyncTestrunner = async () => {
 
   process.exit(1);
 });
+
+const jasmineTestrunner = async () => {
+  const { skippedSpecs } = await launch("jasmineTestrunner", baseConfig, {
+    autoCompileOpts: { autoCompile: false },
+    specs: [path.resolve(__dirname, "test", "example.e2e.ts")],
+    framework: "jasmine",
+
+  });
+
+  assert.strictEqual(skippedSpecs, 1);
+};

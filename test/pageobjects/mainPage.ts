@@ -1,9 +1,11 @@
+import { ElementsArrayHelper } from "../../common/element-wrapper/lib/elements-array-helper";
 import { UIElement } from "../../common/element-wrapper/lib/elements";
 import { BasePage } from "./basepage";
 
 export class MainPage extends BasePage {
   pageUrl: "ui/#sergei_advanced/dashboard";
-
+  private settingsPanelLocator = ".sidebarButton__btn-title-mobile--j8jhQ";
+  private tableHeaderLocator = ".headerCell__title-short--3_s1A";
   get container() {
     return UIElement.getInstance(".layout__layout--bNQ7A");
   }
@@ -12,14 +14,11 @@ export class MainPage extends BasePage {
     return UIElement.getInstance('[title="All Dashboards"]');
   }
 
-  get settingsButton() {
-    return UIElement.getInstance(".sidebarButton__btn-title-mobile--j8jhQ");
+  get tableHeader() {
+    return ElementsArrayHelper.getInstance(this.tableHeaderLocator);
   }
 
-  waitLoaded(timeout?: number): Promise<void> {
-    throw new Error("Method not implemented.");
-  }
-  navigate(): Promise<string | void> {
-    throw new Error("Method not implemented.");
+  get settingsButton() {
+    return ElementsArrayHelper.getInstance(this.settingsPanelLocator);
   }
 }

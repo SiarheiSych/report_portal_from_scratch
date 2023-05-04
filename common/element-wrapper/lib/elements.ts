@@ -137,6 +137,13 @@ export class UIElement {
     return element.getText();
   }
 
+  async getTrimText() {
+    const element = await this.elementInstance;
+    await this.waitForElementDisplayed();
+    const text = await element.getText();
+    return text.trim();
+  }
+
   async setValue(value: string, waitForClickable = true) {
     const element = await this.elementInstance;
     if (waitForClickable) {
