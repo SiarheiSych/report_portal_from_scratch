@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Report portal framework from scratch",
   "scripts": {
-    "test": "mocha test/specs/*.ts",
+    "eslint": "eslint  . --ext .ts",
+    "test": "mocha ./build/test/*.ts --timeout 100000",
+    "build": "npm run clean && tsc ./build", 
     "wdio": "wdio run ./wdio.conf.ts"
   },
   "repository": {
@@ -35,6 +37,10 @@
     "tsconfig-paths": "^3.12.0",
     "tslib": "^2.5.0",
     "typescript": "^4.9.5",
-    "wdio-chromedriver-service": "^8.1.1"
+    "wdio-chromedriver-service": "^8.1.1",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.7"
   }
 }
