@@ -4,9 +4,6 @@ import path from 'path';
 import { applyTimeouts, applyFiles } from './config/utils';
 
 function runMocha(file: string) {
-  //const channel = new MessageChannel();
-  //const Reporter = getReporterFactory(channel, debugSubprocess);
-
   const mocha = new Mocha(options);
 
   applyTimeouts(mocha, options.timeout);
