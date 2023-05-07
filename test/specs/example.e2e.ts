@@ -3,7 +3,7 @@ import { mainPageConstant, userCredantions } from '../../constants';
 import { rpLoginPage } from '../pageobjects/login-page';
 import { MainPage } from '../pageobjects/mainPage';
 
-let mainPage = new MainPage();
+const mainPage = new MainPage();
 const windowSize = {
   width: 1200,
   height: 700

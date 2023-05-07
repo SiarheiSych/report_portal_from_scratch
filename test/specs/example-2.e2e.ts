@@ -3,8 +3,12 @@ import { mainPageConstant, userCredantions } from '../../constants';
 import { rpLoginPage } from '../pageobjects/login-page';
 import { MainPage } from '../pageobjects/mainPage';
 
-let mainPage = new MainPage();
+const mainPage = new MainPage();
 
+const windowSize = {
+  width: 1200,
+  height: 700
+};
 describe('My Login application', () => {
   before('Login to app', async () => {
     await rpLoginPage.open();
@@ -16,7 +20,7 @@ describe('My Login application', () => {
     const settingButtonName = await mainPage.settingsButton.getAllTextsList();
     const expectedResult = Object.values(mainPageConstant.buttons.settingsButton).map(el => el);
     settingButtonName.forEach((el, ind) => {
-      expect(el).toEqual(expectedResult[ind]);
+    expect(el).toEqual(expectedResult[ind]);
     });
   });
 });
