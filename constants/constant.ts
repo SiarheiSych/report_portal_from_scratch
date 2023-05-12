@@ -27,3 +27,10 @@ export const mainPageConstant = {
     delete: 'DELETE'
   }
 };
+export const dashBoardPageConstant = {
+  title: 'Dashboard has been shared by'
+};
+
+export const pageUrls = {
+  mainPage: 'ui/#sergei_advanced/dashboard'
+};

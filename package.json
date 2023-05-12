@@ -5,7 +5,8 @@
   "scripts": {
     "eslint": "eslint  . --ext .ts",
     "wdio": "wdio run ./wdio.conf.ts",
-    "mocha": "ts-node  ./runner/runner.ts"
+    "mocha": "ts-node  ./runner/runner.ts",
+    "cucumber": "wdio run"
   },
   "main": "index.js",
   "repository": {
@@ -15,9 +16,12 @@
   "license": "ISC",
   "homepage": "https://github.com/SiarheiSych/report_portal_from_scratch#readme",
   "dependencies": {
-    "webdriverio": "7.30.2"
+    "webdriverio": "7.30.2",
+    "cucumber": "^6.0.7",
+    "cucumber-pretty": "^6.0.1"
   },
   "devDependencies": {
+    "@types/cucumber": "^7.0.0",
     "@types/chai": "^4.3.5",
     "@types/chromedriver": "^81.0.1",
     "@types/mocha": "^9.1.1",
