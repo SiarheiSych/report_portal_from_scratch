@@ -6,7 +6,7 @@
     "eslint": "eslint  . --ext .ts",
     "wdio": "wdio run ./wdio.conf.ts",
     "mocha": "ts-node  ./runner/runner.ts",
-    "cucumber": "wdio run"
+    "cucumber": "cucumber-js test"
   },
   "main": "index.js",
   "repository": {

@@ -8,20 +8,20 @@ import { DashBoard } from '../pageobjects/dashboard-page';
 const mainPage = new MainPage();
 const dashBoardPage = new DashBoard();
 
-Given('I should open login page', async function () {
+Given(/^I am on the (\w+) page$/, async () => {
   await rpLoginPage.open();
 });
 
-Given('I should login with user credantions', async function () {
+Given(/^I login with user credantions$/, async () => {
   await rpLoginPage.login(userCredantions);
 });
 
-When('I should navigate to main dashboard', async function () {
+When(/^I should navigate to main (\w+) $/, async () => {
   await mainPage.waitLoaded();
   await mainPage.dashBoard.click();
 });
 
-Then('Filters page is opened', async function () {
+Then(/^(\w+) page is open $/, async () => {
   const titleText = await dashBoardPage.title.getText();
   expect(titleText).to.equal(dashBoardPageConstant.title);
 });
