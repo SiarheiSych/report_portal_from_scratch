@@ -28,7 +28,7 @@ export const mainPageConstant = {
   }
 };
 export const dashBoardPageConstant = {
-  title: 'Dashboard has been shared by'
+  title: 'Dashboard has been shared by superadmin'
 };
 
 export const pageUrls = {

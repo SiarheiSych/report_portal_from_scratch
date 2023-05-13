@@ -4,7 +4,7 @@ import path from 'path';
 import { applyTimeouts, applyFiles } from './config/utils';
 
 function runMocha(file: string) {
-  const mocha = new Mocha(options);
+  const mocha = new Mocha();
 
   applyTimeouts(mocha, options.timeout);
   applyFiles(mocha, options.file);
