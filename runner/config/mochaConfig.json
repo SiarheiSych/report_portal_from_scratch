@@ -3,6 +3,5 @@
   "timeout": 10000,
   "require": [
     "ts-node/register"
-  ],
-  "file": "../../test/specs/*.ts"
+  ]
 }
