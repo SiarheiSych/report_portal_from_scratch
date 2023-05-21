@@ -3,8 +3,7 @@ import { Details, uiConstants } from '../../constants';
 import { MainPage } from './main-page';
 
 export class DashBoardPage extends MainPage {
-  pageUrl = `${this.pageUrl}/14`;
-  private containerLocator = '.react-grid-layout';
+  private widgetsDescLocator = '.react-grid-layout';
   private titleLocator = '.pageBreadcrumbs__page-breadcrumbs--29rem';
   private tablesLocator = '.widgetsGrid__widget-view--dVnmj';
   private tablesNameLocator = '.widgetHeader__widget-name-block--7fZoV';
@@ -13,8 +12,13 @@ export class DashBoardPage extends MainPage {
   private amountsLocator = '.totalStatistics__amount--1mzKv';
   private detailsLocator = '.totalStatistics__label--12nUA';
 
+  constructor() {
+    super();
+    this.pageUrl += `/dashboard/14`;
+  }
+
   get container() {
-    return UIElement.getInstance(this.containerLocator);
+    return UIElement.getInstance(this.widgetsDescLocator);
   }
 
   get title() {
@@ -22,11 +26,11 @@ export class DashBoardPage extends MainPage {
   }
 
   get tables() {
-    return ElementsArrayHelper.getInstance(this.containerLocator, { childSelector: this.tablesLocator });
+    return ElementsArrayHelper.getInstance(this.widgetsDescLocator, { childSelector: this.tablesLocator });
   }
 
   get nameOfTables() {
-    return ElementsArrayHelper.getInstance(this.containerLocator, { childSelector: this.tablesNameLocator });
+    return ElementsArrayHelper.getInstance(this.widgetsDescLocator, { childSelector: this.tablesNameLocator });
   }
 
   get totalStatistic() {

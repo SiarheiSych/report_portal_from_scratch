@@ -28,7 +28,6 @@ export const mainPageConstant = {
   }
 };
 
-
 export const pageUrls = {
   mainPage: 'ui/#sergei_advanced/dashboard'
 };
@@ -53,5 +52,17 @@ export enum Details {
   details
 }
 
+export enum Buttons {
+  dashBoards = 0,
+  launches = 1,
+  filters = 2,
+  projectSettings = 3
+}
 
-
+export enum HamburgerButtons {
+  forceFinish = 0,
+  Analysis = 1,
+  uniqueErrorAnalysis = 2,
+  patternAnalysis = 3,
+  delete = 4
+}

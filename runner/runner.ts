@@ -1,5 +1,5 @@
 import Mocha from 'mocha';
-import options from './config/mochaConfig.json';
+import options from './config/mocha-config.json';
 import path from 'path';
 import { applyTimeouts } from './config/utils';
 

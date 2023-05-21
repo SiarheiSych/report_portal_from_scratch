@@ -1,9 +1,10 @@
 import { ElementsArrayHelper } from '../../common/element-wrapper/lib/elements-array-helper';
 import { UIElement } from '../../common/element-wrapper/lib/elements';
 import { BasePage } from './base-page';
+import { Buttons } from '../../constants';
 
 export class MainPage extends BasePage {
-  pageUrl: 'ui/#sergei_advanced/dashboard';
+  pageUrl: 'ui/#sergei_advanced';
   private settingsPanelLocator = '.sidebarButton__btn-title-mobile--j8jhQ';
   private tableHeaderLocator = '.headerCell__title-short--3_s1A';
   private pageBreadCrumbs = '.dashboardPageToolbar__buttons--1giLD';
@@ -12,9 +13,10 @@ export class MainPage extends BasePage {
   private tableTitleLocator = '.dashboardGridList__headline--3xz62';
   private sharedDashboardContainer = '.dashboardGridList__dashboard-grid-body--2_iXc';
   private dashboardButtonLocator = '.gridCell__align-left--2beIG';
+  private sideBarLocator = '.layout__sidebar-container--gX2bY';
 
   get container() {
-    return UIElement.getInstance('.layout__layout--bNQ7A');
+    return UIElement.getInstance('.pageLayout__page-layout--1YfSw');
   }
 
   get title() {
@@ -56,5 +58,12 @@ export class MainPage extends BasePage {
     const projectTable = await this.tables.getElementsArray();
     const projectTables = projectTable[1];
     return projectTables;
+  }
+
+  async sideBarButton(ind: Buttons) {
+    const buttonLocator = ElementsArrayHelper.getInstance(this.sideBarLocator, { childSelector: '.sidebar__top-block--6oCNs a' });
+    const asdasd = await buttonLocator.getElementsArray();
+    const button = await asdasd[ind];
+    return await button.click();
   }
 }

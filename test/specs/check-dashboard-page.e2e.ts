@@ -30,7 +30,7 @@ describe('My Login application', () => {
     expect(countOfTables.length).toEqual(12, 'Count of tables incorrect');
   });
 
-  it('should have correct sum of total and details on overall statistic ', async () => {
+  it('should have correct sum of total and details on overall statistic', async () => {
     const totalCount = await dashBoardPage.totalStatistic.getTrimText();
     const elementaryTotalCount = parseInt(totalCount);
     const detailLocator = await dashBoardPage.detailsResult(Details.amount);
