@@ -27,3 +27,22 @@ export const mainPageConstant = {
     delete: 'DELETE'
   }
 };
+
+export const dashBoardPageConstant = {
+  title: 'ALL DASHBOARDSDEMO DASHBOARD',
+  tablesName: {
+    launchStatisticsArea: 'LAUNCH STATISTICS AREA',
+    launchStatisticBar: 'LAUNCH STATISTICS BAR',
+    investigatedLaunchesPercentage: 'INVESTIGATED PERCENTAGE OF LAUNCHES',
+    testCaseTrendChart: 'TEST CASES GROWTH TREND CHART',
+    overallStatisticsPanel: 'OVERALL STATISTICS PANEL',
+    launchesDurationChart: 'LAUNCHES DURATION CHART',
+    overallStatisticDonut: 'OVERALL STATISTICS DONUT',
+    failedCasesTrendChart: 'FAILED CASES TREND CHART'
+  }
+};
+
+export enum Details {
+  amount,
+  details
+}
