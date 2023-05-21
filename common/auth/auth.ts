@@ -1,17 +1,17 @@
-import { browserWrapper } from "../element-wrapper";
-import { getLogger } from "log4js";
-import { LoginPage } from "../constant";
-import { userCredantions } from "../../constants/constant";
+import { browserWrapper } from '../element-wrapper';
+import { getLogger } from 'log4js';
+import { userCredantions } from '../../constants/constant';
+import { LoginPage } from '../../constants';
 
-const logger = getLogger("[Login helper]");
+const logger = getLogger('[Login helper]');
 
 let rpLoginPage: LoginPage;
 
 export async function loginAsUser() {
   try {
-    await browserWrapper.navigate("http://localhost:8080/");
+    await browserWrapper.navigate('http://localhost:8080/');
     await rpLoginPage.login(userCredantions);
   } catch (error) {
-    logger.info("Page failed to load");
+    logger.info('Page failed to load');
   }
 }

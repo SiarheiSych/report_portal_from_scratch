@@ -27,9 +27,6 @@ export const mainPageConstant = {
     delete: 'DELETE'
   }
 };
-export const dashBoardPageConstant = {
-  title: 'Dashboard has been shared by superadmin'
-};
 
 export const pageUrls = {
   mainPage: 'ui/#sergei_advanced/dashboard',
@@ -58,3 +55,38 @@ export const requestConstants = {
     bearer: 'Bearer'
   }
 };
+
+export const dashBoardPageConstant = {
+  header: 'Dashboard has been shared by superadmin',
+  title: 'ALL DASHBOARDSDEMO DASHBOARD',
+  tablesName: {
+    launchStatisticsArea: 'LAUNCH STATISTICS AREA',
+    launchStatisticBar: 'LAUNCH STATISTICS BAR',
+    investigatedLaunchesPercentage: 'INVESTIGATED PERCENTAGE OF LAUNCHES',
+    testCaseTrendChart: 'TEST CASES GROWTH TREND CHART',
+    overallStatisticsPanel: 'OVERALL STATISTICS PANEL',
+    launchesDurationChart: 'LAUNCHES DURATION CHART',
+    overallStatisticDonut: 'OVERALL STATISTICS DONUT',
+    failedCasesTrendChart: 'FAILED CASES TREND CHART'
+  }
+};
+
+export enum Details {
+  amount,
+  details
+}
+
+export enum Buttons {
+  dashBoards = 0,
+  launches = 1,
+  filters = 2,
+  projectSettings = 3
+}
+
+export enum HamburgerButtons {
+  forceFinish = 0,
+  Analysis = 1,
+  uniqueErrorAnalysis = 2,
+  patternAnalysis = 3,
+  delete = 4
+}
