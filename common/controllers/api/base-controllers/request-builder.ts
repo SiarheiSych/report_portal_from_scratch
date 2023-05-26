@@ -1,8 +1,8 @@
 import { Cookie } from '@wdio/protocols';
 import type { AxiosRequestConfig, ResponseType } from 'axios';
 import Axios from 'axios';
-import { Authorization, requestConstants } from '../../../constants';
-import { getLogger } from '../../utils';
+import { Authorization, requestConstants } from '../../../../constants';
+import { getLogger } from '../../../utils';
 
 import { ajvValidate } from './request-validator';
 

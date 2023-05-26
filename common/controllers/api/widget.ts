@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { BaseController } from '../../../constants';
 import { WidgetsAllNameResponse } from '../../models/widgets';
-import { JsonRequest } from './json-builder';
+import { JsonRequest } from './base-controllers/json-builder';
 
 const apiUrlPath = 'http://localhost:8080/api';
 

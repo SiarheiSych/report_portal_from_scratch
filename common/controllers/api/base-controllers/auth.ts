@@ -1,6 +1,6 @@
-import { getLogger } from '../../utils';
+import { getLogger } from '../../../utils';
 import { RequestBuilder } from './request-builder';
-import { Token, TokenRequestBody } from '../../models/auth';
+import { Token, TokenRequestBody } from '../../../models/auth';
 
 const logger = getLogger('[AUTH]');
 
@@ -18,9 +18,9 @@ export class Auth {
     const tokenResponse = await new RequestBuilder()
       .setHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-      'Connection': 'keep-alive',
-      'Accept': 'application/json, text/plain, */*',
-      'Authorization':'Basic dWk6dWltYW4=',
+        Connection: 'keep-alive',
+        Accept: 'application/json, text/plain, */*',
+        Authorization: 'Basic dWk6dWltYW4='
       })
       .setBody(
         new URLSearchParams({
@@ -32,5 +32,4 @@ export class Auth {
       .post<Token>(`${this.apiTokenURL}/sso/oauth/token`);
     return tokenResponse.data;
   }
-
 }

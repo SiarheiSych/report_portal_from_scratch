@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import { TokenRequestBody } from '../../../models/auth';
-import { Auth } from '../auth';
+import { Auth } from './auth';
 
 export class BaseClient {
 
