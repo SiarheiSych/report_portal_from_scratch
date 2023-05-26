@@ -10,18 +10,18 @@ const body: DashBoardBodyRequest = {
   share: true
 };
 describe('My Login application', () => {
-  it('should have correct name of setting button breadcrumb', async () => {
+  it('should have correct response for get widgets', async () => {
     myClient = await MyClient.loginAs(userCredantions);
     const widgets = await myClient.widgets.getWidgets('sergei_advanced', true);
     expect(widgets.status).equal(requestConstants.statusCodes.success);
   });
 
-  it('should have correct name of setting button breadcrumb', async () => {
+  it('should have correct response for get dashboard', async () => {
     const dashBoard = await myClient.dashBoard.getDashBoard('sergei_advanced', true);
     expect(dashBoard.status).equal(requestConstants.statusCodes.success);
   });
 
-  it('should have correct name of setting button breadcrumb', async () => {
+  it('should not be null for post dash board', async () => {
     const dashBoard = await myClient.dashBoard.postDashBoard('sergei_advanced', body, false);
     expect(dashBoard).not.to.be.null;
   });
