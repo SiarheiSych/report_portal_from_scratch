@@ -2,6 +2,7 @@ import Ajv, { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';
 import { RequestMethods } from './enum';
 
+
 export function ajvValidate(schema: unknown, body: unknown) {
   const ajv = new Ajv({
     strict: false,

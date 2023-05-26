@@ -1,23 +1,12 @@
-import { AxiosResponse } from 'axios';
-import { BaseClient } from '../../common/controllers/base-client';
-import { browserWrapper } from '../../common/element-wrapper';
-import { WidgetsAllNameResponse } from '../../common/models/widgets';
-import { userCredantions } from '../../constants';
-import { rpLoginPage } from '../pageobjects/login-page';
+import { MyClient } from '../../common/controllers/api/my-client';
+import { requestConstants, userCredantions } from '../../constants';
 
-let widgets: AxiosResponse<WidgetsAllNameResponse>;
+let myClient: MyClient;
 
 describe('My Login application', () => {
-//   before('Login to app', async () => {
-//     await rpLoginPage.open();
-//     await browserWrapper.setWindowSize(windowSize.width, windowSize.height);
-//     await rpLoginPage.login(userCredantions);
-//   });
-
   it('should have correct name of setting button breadcrumb', async () => {
-    let client = new BaseClient();
-    client = await BaseClient.loginAs();
-    await client.widgets.getWidgets('sergei_advanced');
-    console.log(widgets);
+    myClient = await MyClient.loginAs(userCredantions);
+    const widgets = await myClient.widgets.getWidgets('sergei_advanced', true);
+    expect(widgets.status).toEqual(requestConstants.statusCodes.success);
   });
 });

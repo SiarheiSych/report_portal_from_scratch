@@ -1,4 +1,5 @@
-import { RequestBuilder } from './request-builder';
+import { RequestBuilder } from "./request-builder";
+
 
 export class JsonRequest extends RequestBuilder {
   constructor() {

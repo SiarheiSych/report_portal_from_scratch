@@ -1,9 +1,17 @@
 import { Cookie } from '@wdio/protocols';
 import type { AxiosRequestConfig, ResponseType } from 'axios';
 import Axios from 'axios';
-import { Authorization, requestConstants } from '../../constants';
+import { Authorization, requestConstants } from '../../../constants';
+import { getLogger } from '../../utils';
+
 import { ajvValidate } from './request-validator';
 
+const logger = getLogger('[Request]');
+
+Axios.interceptors.request.use(request => {
+  logger.info(`Request body: ${JSON.stringify(request.data)}`);
+  return request;
+});
 
 export class RequestBuilder {
   private requestOptions: AxiosRequestConfig = {};
@@ -16,9 +24,9 @@ export class RequestBuilder {
 
   public setHeaders(headers?: { [key: string]: string }): this {
     this.requestOptions.headers = {
-      'content-Type': 'application/json',
-      connection: 'keep-alive',
-      accept: '*/*',
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Connection': 'keep-alive',
+      'Accept': 'application/json, text/plain, */*',
       ...this.requestOptions.headers,
       ...headers
     };
