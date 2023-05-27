@@ -21,3 +21,36 @@ export const requestConstants = {
     bearer: 'Bearer'
   }
 };
+
+
+export const apiConst = {
+  widgetContent: "DEMO_FILTER_098",
+  error:{
+   enoughPermission: 'You do not have enough permissions. Access is denied'
+  }
+}
+
+
+
+export const mockBodyForPutRequest  = {
+  description: 'string',
+  name: 'string',
+  share: true,
+  updateWidgets: [
+    {
+      share: true,
+      widgetId: 0,
+      widgetName: 'LAUNCH STATISTICS AREA',
+      widgetOptions: {},
+      widgetPosition: {
+        positionX: 0,
+        positionY: 0
+      },
+      widgetSize: {
+        height: 0,
+        width: 0
+      },
+      widgetType: 'sd'
+    }
+  ]
+};

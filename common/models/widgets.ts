@@ -16,7 +16,7 @@ export interface Page {
 }
 
 export interface DashBoardResponse {
-  content: Content;
+  content: Content[];
   page: Page;
 }
 
@@ -65,4 +65,12 @@ export interface DashBoardBodyRequest {
   description: string;
   name: string;
   share: boolean;
+}
+
+export interface UpdateDashBoardResponse {
+  message:string
+}
+
+export interface DeleteDashBoardResponse {
+  message:string
 }

@@ -22,6 +22,6 @@
     "allowJs": true,
     "types": ["node", "webdriverio/async", "chai", "mocha"]
   },
-  "include": ["common/**/**/*.ts", "constant/*.ts", "test/**/*.ts", "specs/*e2e.ts", "global.d.ts", "wdio.conf.ts", "runner/**/*", "test/pageobjects/cucumber-pageobjects"],
+  "include": ["common/**/**/**/*.ts", "constants/**/*.ts", "test/**/*.ts", "specs/*e2e.ts", "global.d.ts", "wdio.conf.ts", "runner/**/*", "test/pageobjects/cucumber-pageobjects"],
   "exclude": ["node_modules"]
 }
