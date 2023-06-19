@@ -1,22 +1,27 @@
-import { UIElement, browserWrapper } from "../../common/element-wrapper";
-import { uiConstants, Page } from "../../constants";
+import { Browser } from '../../common/element-wrapper';
+import { uiConstants, Page } from '../../constants';
+import { MyHelpers } from '../../common/element-wrapper/lib/elements';
+
+let browser: Browser;
+let elementHelper: MyHelpers;
 
 export abstract class BasePage implements Page {
   abstract pageUrl: string;
-  private _container: UIElement;
-  protected get container(): UIElement {
+  private _container: any;
+  protected get container() {
     return this._container;
   }
-  protected set container(value: UIElement) {
+
+  protected set container(value) {
     this._container = value;
   }
 
   async waitLoaded(timeout = uiConstants.timeouts.defaultWait) {
-    await this.container.waitForElementDisplayed(timeout);
+    await elementHelper.seeElement(this.container, timeout);
   }
 
   async navigate(): Promise<string | void> {
-    await browserWrapper.navigate(this.pageUrl);
+    await browser.CreatePage(this.pageUrl);
     return this.waitLoaded();
   }
 }

@@ -16,7 +16,7 @@
     "inlineSourceMap": true,
     "removeComments": true,
     "esModuleInterop": true,
-    "target": "ES6",
+    "target": "es2017",
     "module": "ESNext",
     "lib": ["es2020", "dom", "ES2021.String"],
     "allowJs": true,
