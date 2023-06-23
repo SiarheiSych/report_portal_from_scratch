@@ -1,55 +1,71 @@
-import { browserWrapper, ElementsArrayHelper, UIElement } from '../../common/element-wrapper';
-import { Details, uiConstants } from '../../constants';
-import { MainPage } from './main-page';
+import { BrowserHelper, ElementHelper } from '../../common/element-wrapper';
+import { BasePage } from './base-page';
 
-export class DashBoardPage extends MainPage {
-  private widgetsDescLocator = '.react-grid-layout';
-  private titleLocator = '.pageBreadcrumbs__page-breadcrumbs--29rem';
-  private tablesLocator = '.widgetsGrid__widget-view--dVnmj';
-  private tablesNameLocator = '.widgetHeader__widget-name-block--7fZoV';
-  private totalStatisticsLocator = '.totalStatistics__total--19V2J';
-  private totalStatisticsDetailLocator = '.totalStatistics__details--3-s7k';
-  private amountsLocator = '.totalStatistics__amount--1mzKv';
-  private detailsLocator = '.totalStatistics__label--12nUA';
+export class DashBoardPage extends BasePage {
+  private containerLocator = '#app div[class^="pageLayout__page-layout"]';
+  private logoLocator = '[class^="layout__corner-area--DwLCT"]';
+  private widgetsDescLocator = '[class^="widget__widget-container"]';
+  private tablesNameLocator = '[class^="dashboardItemPage__shared-caption"]';
+  private totalStatisticsLocator = '[class^="totalStatistics__total--19V2J"]';
+  private totalStatisticsDetailLocator = '[class^="totalStatistics__details--3-s7k"]';
+  private amountsLocator = '[class^="totalStatistics__amount--1mzKv"]';
+  private detailsLocator = '[class^="totalStatistics__label--12nUA"]';
 
   constructor() {
     super();
-    this.pageUrl += `/dashboard/14`;
+    this.logoLocator;
   }
 
   get container() {
-    return UIElement.getInstance(this.widgetsDescLocator);
+    return ElementHelper.getElement(this.containerLocator);
   }
 
-  get title() {
-    return UIElement.getInstance(this.titleLocator);
-  }
-
-  get tables() {
-    return ElementsArrayHelper.getInstance(this.widgetsDescLocator, { childSelector: this.tablesLocator });
-  }
-
-  get nameOfTables() {
-    return ElementsArrayHelper.getInstance(this.widgetsDescLocator, { childSelector: this.tablesNameLocator });
+  get tablesName() {
+    return ElementHelper.getElement(this.tablesNameLocator);
   }
 
   get totalStatistic() {
-    return UIElement.getInstance(this.totalStatisticsLocator, { childSelector: this.amountsLocator });
+    return ElementHelper.getElement(this.totalStatisticsLocator);
   }
 
-  async detailsResult(kind: Details) {
-    if (kind == Details.amount) {
-      return ElementsArrayHelper.getInstance(this.totalStatisticsDetailLocator, { childSelector: this.amountsLocator });
-    } else {
-      return ElementsArrayHelper.getInstance(this.totalStatisticsDetailLocator, { childSelector: this.detailsLocator });
-    }
-  }
-  async waitLoaded(timeout = uiConstants.timeouts.defaultWait) {
-    await this.container.waitForElementDisplayed(timeout);
+  get totalStatisticsDetail() {
+    return ElementHelper.getElement(this.totalStatisticsDetailLocator);
   }
 
-  async navigate(): Promise<string | void> {
-    await browserWrapper.navigate(this.pageUrl);
-    return this.waitLoaded();
+  get amounts() {
+    return ElementHelper.getElement(this.amountsLocator);
+  }
+
+  get details() {
+    return ElementHelper.getElement(this.detailsLocator);
+  }
+
+  async getLogo() {
+    return ElementHelper.getText(this.logoLocator);
+  }
+
+  async getWidget(ind: number) {
+    return this.getListOfWidgets[ind];
+  }
+
+  async getListOfWidgets() {
+    return ElementHelper.getElementArray(this.widgetsDescLocator);
+  }
+
+  async dragAndDropWidgets(ind: number, coordinateX: number, coordinateY: number) {
+    const locator = await this.getWidget(ind);
+    await ElementHelper.dragAndDropElement(locator, coordinateX, coordinateY);
+  }
+
+  async waitLoaded() {
+    await BrowserHelper.page.waitForSelector(this.containerLocator, { visible: true, timeout: 5000 });
+    await BrowserHelper.page.waitForSelector(this.logoLocator, { visible: true, timeout: 10000 });
+  }
+
+  async findWidgetByName(name: string) {
+    const locator = `//div[contains(@class, "react-grid-item") and contains(., "${name}")]`;
+    return await ElementHelper.getElement(locator)
   }
 }
+
+export const dashBoardPage = new DashBoardPage();

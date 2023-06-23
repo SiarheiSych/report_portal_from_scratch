@@ -1,28 +1,29 @@
-import { UIElement } from "../../common/element-wrapper";
-import { LoginPage, uiConstants, User } from "../../constants";
+import { ElementHelper } from '../../common/element-wrapper';
+import { User } from '../../constants';
+import { BasePage } from './base-page';
+import { MainPage } from './main-page';
 
-class RPLoginPage implements LoginPage {
-  get loginPanel() {
-    return UIElement.getInstance('[placeholder="Login"]');
+let elementHelper: ElementHelper;
+class RPLoginPage extends BasePage {
+  private loginInputNameFieldLocator = '[class^="inputOutside__input"]';
+  private inputPasswordFieldLocator = 'input[name="password"]';
+  private submitButtonLocator = '[class^="bigButton__big-button"]';
+
+  
+  get loginInputField() {
+    return ElementHelper.getElement(this.loginInputNameFieldLocator);
   }
 
-  get passwordInput() {
-    return UIElement.getInstance('[placeholder="Password"]');
+  public async login(user: User) {
+    await this.waitLoaded();
+    await ElementHelper.setValue(this.loginInputNameFieldLocator, user.username);
+    await ElementHelper.setValue(this.inputPasswordFieldLocator, user.password);
+    await ElementHelper.clickOnElement(this.submitButtonLocator);
+    return new MainPage();
   }
 
-  get loginButton() {
-    return UIElement.getInstance('[type="submit"]');
-  }
-
-  public open() {
-    return browser.url(`http://localhost:8080/ui/#login`);
-  }
-
-  async login(user: User) {
-    await this.loginPanel.waitForElementDisplayed(uiConstants.timeouts.defaultWait);
-    await this.loginPanel.setValue(user.username);
-    await this.passwordInput.setValue(user.password);
-    await this.loginButton.click();
+  async waitLoaded() {
+    await elementHelper.isElementDisplayed(this.loginInputField);
   }
 }
 

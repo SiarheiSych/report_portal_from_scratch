@@ -1,12 +1,9 @@
-import { Browser } from '../../common/element-wrapper';
-import { uiConstants, Page } from '../../constants';
-import { MyHelpers } from '../../common/element-wrapper/lib/elements';
+import { BrowserHelper } from '../../common/element-wrapper';
+import { ElementHelper } from '../../common/element-wrapper/lib/elements';
 
-let browser: Browser;
-let elementHelper: MyHelpers;
-
-export abstract class BasePage implements Page {
-  abstract pageUrl: string;
+let elementHelper: ElementHelper;
+let browserHelper: BrowserHelper;
+export abstract class BasePage {
   private _container: any;
   protected get container() {
     return this._container;
@@ -16,12 +13,10 @@ export abstract class BasePage implements Page {
     this._container = value;
   }
 
-  async waitLoaded(timeout = uiConstants.timeouts.defaultWait) {
-    await elementHelper.seeElement(this.container, timeout);
+  async open(url): Promise<void> {
+    await browserHelper.CreatePage(url);
   }
-
-  async navigate(): Promise<string | void> {
-    await browser.CreatePage(this.pageUrl);
-    return this.waitLoaded();
+  async waitLoaded() {
+    await elementHelper.isElementDisplayed(this.container);
   }
 }

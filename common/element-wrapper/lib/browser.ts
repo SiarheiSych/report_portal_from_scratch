@@ -1,13 +1,14 @@
-import puppeteer from "puppeteer";
+import puppeteer, { Page } from 'puppeteer';
 import { IBrowser } from '../../../constants';
 import { getLogger } from '../../utils/lib/logger';
 const logger = getLogger('[Browser Wrapper]');
 
-  
-export class Browser implements IBrowser {
-  private browser: puppeteer.browser
+export class BrowserHelper implements IBrowser {
+  static page: Page;
+
+  private browser: puppeteer.browser;
   private readonly TIMEOUT: number;
-  private readonly USER_AGENT = 'INSERT_USERAGENT';
+
 
   constructor(_timeout = 30000) {
     this.TIMEOUT = _timeout;
@@ -46,7 +47,7 @@ export class Browser implements IBrowser {
     return page;
   }
 
-  private async Init(HeadLess = true, SlowDown = 0, DevTools = false) {
+  public async Init(HeadLess = true, SlowDown = 0, DevTools = false) {
     logger.info('Puppeteer browser init. Timeout set to: ' + this.TIMEOUT.toString());
     this.browser = await this.StartBrowser(HeadLess, SlowDown, DevTools);
 
@@ -59,7 +60,7 @@ export class Browser implements IBrowser {
     });
   }
 
-  private async ReleaseBrowser() {
+  public async ReleaseBrowser() {
     logger.warn('Puppeteer browser releasing and closing.');
     if (this.browser) await this.browser.close();
   }
@@ -84,4 +85,3 @@ export class Browser implements IBrowser {
     });
   }
 }
-
