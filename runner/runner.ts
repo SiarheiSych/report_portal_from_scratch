@@ -28,4 +28,4 @@ function runMocha(file: string) {
     });
 }
 
-runMocha('../test/specs/example.e2e.ts');
+runMocha('../test/specs/dashboard-page.ts');

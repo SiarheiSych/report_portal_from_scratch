@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { BrowserHelper } from '../../common/element-wrapper';
 import { baseUrl, dashBoardPageConstant, userCredantions } from '../../constants';
 import { DashBoardPage, mainPage, rpLoginPage } from '../pageobjects';
