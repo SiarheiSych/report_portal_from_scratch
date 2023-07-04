@@ -51,6 +51,7 @@
     "webdriverio": "7.30.2"
   },
   "dependencies": {
-    "webdriver-manager": "^12.1.9"
+    "webdriver-manager": "^12.1.9",
+    "@wdio/browserstack-service": "^7.32.0"
   }
 }
