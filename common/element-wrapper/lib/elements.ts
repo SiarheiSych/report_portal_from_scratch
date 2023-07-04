@@ -1,16 +1,13 @@
-import { getLogger } from "log4js";
-import { ElementsArrayHelper } from "./elements-array-helper";
-import { ElementParamsObj } from "./types";
-import { uiConstants } from "../../../constants/ui-constants";
+import { getLogger } from 'log4js';
+import { ElementsArrayHelper } from './elements-array-helper';
+import { ElementParamsObj } from './types';
+import { uiConstants } from '../../../constants/ui/ui-constants';
 
 const logger = getLogger();
 
 export class UIElement {
   constructor(
-    private elementInstance:
-      | ReturnType<WebdriverIO.Browser["$"]>
-      | WebdriverIO.Element
-      | Promise<WebdriverIO.Element>,
+    private elementInstance: ReturnType<WebdriverIO.Browser['$']> | WebdriverIO.Element | Promise<WebdriverIO.Element>,
     public selector?: string
   ) {}
 
@@ -26,9 +23,7 @@ export class UIElement {
   }
 
   private async childInstance(childSelector: string): Promise<WebdriverIO.Element> {
-    logger.debug(
-      `Awaiting for element ${this.selector} and searching for its child ${childSelector}`
-    );
+    logger.debug(`Awaiting for element ${this.selector} and searching for its child ${childSelector}`);
     const element = await this.elementInstance;
     return element.$(childSelector);
   }
@@ -39,9 +34,7 @@ export class UIElement {
   }
 
   private async childArrayInstance(childSelector: string): Promise<WebdriverIO.ElementArray> {
-    logger.debug(
-      `Awaiting for element ${this.selector} and searching for its child array of elements ${childSelector}`
-    );
+    logger.debug(`Awaiting for element ${this.selector} and searching for its child array of elements ${childSelector}`);
     const element = await this.elementInstance;
     return element.$$(childSelector);
   }
@@ -51,10 +44,7 @@ export class UIElement {
     return new ElementsArrayHelper(this.childArrayInstance(childSelector), fullSelector);
   }
 
-  async waitForElementPresent(
-    timeout: number = uiConstants.timeouts.defaultWait,
-    interval: number = uiConstants.intervals.defaultInterval
-  ) {
+  async waitForElementPresent(timeout: number = uiConstants.timeouts.defaultWait, interval: number = uiConstants.intervals.defaultInterval) {
     logger.debug(`Awaiting for element ${this.selector}`);
     const element = await this.elementInstance;
     try {
@@ -65,10 +55,7 @@ export class UIElement {
     }
   }
 
-  async waitForElementDisplayed(
-    timeout = uiConstants.timeouts.defaultWait,
-    interval = uiConstants.intervals.defaultInterval
-  ) {
+  async waitForElementDisplayed(timeout = uiConstants.timeouts.defaultWait, interval = uiConstants.intervals.defaultInterval) {
     const element = await this.elementInstance;
     try {
       await element.waitForDisplayed({ timeout, interval });
@@ -78,10 +65,7 @@ export class UIElement {
     }
   }
 
-  async waitForElementIsClickable(
-    timeout = uiConstants.timeouts.defaultWait,
-    interval = uiConstants.intervals.defaultInterval
-  ) {
+  async waitForElementIsClickable(timeout = uiConstants.timeouts.defaultWait, interval = uiConstants.intervals.defaultInterval) {
     const element = await this.elementInstance;
     try {
       await element.waitForClickable({ timeout, interval });
@@ -120,7 +104,7 @@ export class UIElement {
     await this.waitForElementDisplayed();
     await this.waitForElementIsClickable();
     logger.info(`Right click '${this.selector}' element`);
-    return element.click({ button: "right" });
+    return element.click({ button: 'right' });
   }
 
   async dragAndDrop(targetElem: UIElement) {
@@ -135,6 +119,13 @@ export class UIElement {
     const element = await this.elementInstance;
     await this.waitForElementPresent();
     return element.getText();
+  }
+
+  async getTrimText() {
+    const element = await this.elementInstance;
+    await this.waitForElementDisplayed();
+    const text = await element.getText();
+    return text.trim();
   }
 
   async setValue(value: string, waitForClickable = true) {
@@ -172,5 +163,10 @@ export class UIElement {
     await this.waitForElementPresent();
     logger.info(`Hover cursor over the middle of'${this.selector}' element`);
     return element.moveTo(options);
+  }
+
+  async getParentElement() {
+    const element = await this.elementInstance;
+    return new UIElement(element.parentElement());
   }
 }

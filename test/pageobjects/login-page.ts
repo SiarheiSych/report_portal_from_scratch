@@ -20,7 +20,7 @@ class RPLoginPage implements LoginPage {
 
   async login(user: User) {
     await this.loginPanel.waitForElementDisplayed(uiConstants.timeouts.defaultWait);
-    await this.loginPanel.setValue(user.userName);
+    await this.loginPanel.setValue(user.username);
     await this.passwordInput.setValue(user.password);
     await this.loginButton.click();
   }
