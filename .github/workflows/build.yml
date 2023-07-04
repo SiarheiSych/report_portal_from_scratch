@@ -34,7 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  teams_integration_success:
+  integration:
     runs-on: ubuntu-latest
     needs: [dotenv_init, build, sonarcloud]
     if: always() && ${{needs.*.result == 'success'}}
