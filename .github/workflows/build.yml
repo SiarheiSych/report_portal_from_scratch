@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  dotenv_init:
+  init:
     runs-on: ubuntu-latest
     steps:
       - name: 'Create env file'
