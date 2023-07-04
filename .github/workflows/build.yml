@@ -41,8 +41,8 @@ jobs:
     if: always() && ${{needs.*.result == 'success'}}
     steps:
       # - uses: skitionek/notify-microsoft-teams@master
-        with:
-          overwrite: "{title: 'Github Bot notification SUCCESS'}"
-          needs: ${{ toJson(needs) }}
-          job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
+        # with:
+        #   overwrite: "{title: 'Github Bot notification SUCCESS'}"
+        #   needs: ${{ toJson(needs) }}
+        #   job: ${{ toJson(job) }}
+        #   steps: ${{ toJson(steps) }}
