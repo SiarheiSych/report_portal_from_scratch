@@ -7,6 +7,12 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Create env file'
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+
   build:
     runs-on: ubuntu-latest
     steps:
