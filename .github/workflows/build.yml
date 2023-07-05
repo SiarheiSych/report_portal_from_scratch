@@ -32,7 +32,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-  notification:
+  integration:
     runs-on: ubuntu-latest
     needs: [init, build, sonarcloud]
     if: always() && ${{needs.*.result == 'success'}}
@@ -41,6 +41,8 @@ jobs:
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
           overwrite: "{title: 'Pipeline finished success'}"
-          needs: ${{ toJson(needs) }}
-          job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
+            job: ${{ toJson(job) }}
+            steps: ${{ toJson(steps) }}
+            needs: ${{ toJson(needs) }}
+    
+         
