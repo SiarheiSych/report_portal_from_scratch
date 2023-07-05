@@ -40,7 +40,7 @@ jobs:
       - uses: skitionek/notify-microsoft-teams@master
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
-          overwrite: "{title: 'Github Bot notification SUCCESS'}"
+          overwrite: "{title: 'Pipeline finished success'}"
           needs: ${{ toJson(needs) }}
           job: ${{ toJson(job) }}
           steps: ${{ toJson(steps) }}
