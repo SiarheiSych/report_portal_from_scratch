@@ -41,8 +41,6 @@ jobs:
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
           overwrite: "{title: 'Pipeline finished success'}"
-            job: ${{ toJson(job) }}
-            steps: ${{ toJson(steps) }}
-            needs: ${{ toJson(needs) }}
-    
-         
+          job: ${{ toJson(job) }}
+          steps: ${{ toJson(steps) }}
+          needs: ${{ toJson(needs) }}
