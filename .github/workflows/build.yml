@@ -12,7 +12,6 @@ jobs:
       - name: 'Create env file'
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env
-
   build:
     runs-on: ubuntu-latest
     steps:
